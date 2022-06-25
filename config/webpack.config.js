@@ -323,7 +323,7 @@ module.exports = function (webpackEnv) {
         "@api": path.resolve(__dirname, "../src/api/"),
         "@assets": path.resolve(__dirname, "../src/assets/"),
         "@components": path.resolve(__dirname, "../src/components/"),
-        "@scss": path.resolve(__dirname, "../src/scss/"),
+        "@sass": path.resolve(__dirname, "../src/sass/"),
         "@store": path.resolve(__dirname, "../src/store/"),
         "@utils": path.resolve(__dirname, "../src/utils/"),
       },

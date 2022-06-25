@@ -16,7 +16,7 @@
       "@api/*": ["api/*"],
       "@assets/*": ["assets/*"],
       "@components/*": ["components/*"],
-      "@scss/*": ["scss/*"],
+      "@sass/*": ["sass/*"],
       "@store/*": ["store/*"],
       "@utils/*": ["utils/*"],
     },
