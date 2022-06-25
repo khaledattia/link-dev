@@ -1,0 +1,41 @@
+/**
+* == css custom properties ==
+*
+* This won't work on IE 11
+*
+* We can just use the sass variables instead
+* that way the color itself will be included
+*/
+    :root {
+    // Primary
+    --orange: #ff7c16;
+    --purple: #f215b6;
+    --charreuse: #a6e51c;
+    --skyblue: #0eceff;
+
+    // Nature
+    --background: #e3e3e3;
+    --text-1: #5e6282;
+    --text-2: #707070;
+
+    // font weight
+    --font-bold: 600;
+    --font-extra-bold: 700;
+    }
+
+// == Sass Variables ==
+
+    // Primary
+    $orange: #ff7c16;
+    $purple: #f215b6;
+    $charreuse: #a6e51c;
+    $skyblue: #0eceff;
+
+    // Nature
+    $background: #e3e3e3;
+    $text-1: #5e6282;
+    $text-2: #707070;
+
+    // font weight
+    $font-bold: 600;
+    $font-extra-bold: 700;
