@@ -1,0 +1,6 @@
+@use "./functions" as f;
+
+@mixin square($size) {
+  width: f.rem($size);
+  height: f.rem($size);
+}

@@ -1,0 +1,8 @@
+@forward "global";
+@forward "util";
+@use "./util/functions" as f;
+
+
+.container {
+    padding: 0 f.rem(15);
+}

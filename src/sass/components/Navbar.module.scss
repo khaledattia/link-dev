@@ -1,0 +1,217 @@
+@use "../util" as u;
+@use "../global/colors" as c;
+
+%burger-bar {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background: #353535;
+  border-radius: 50px;
+  transition: all 0.3s;
+}
+
+nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  color: #353535;
+  font-size: 0.875rem;
+}
+
+.links {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  padding: 6rem 0 1rem;
+  background-color: white;
+
+  // toolbar nav
+  &_right {
+    order: -1;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0 1rem;
+
+    .lang {
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+      align-items: center;
+      margin-right: auto;
+      order: -1;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+      background-color: transparent;
+      font-family: "Poppins";
+    }
+
+    button span {
+      margin-left: 0.35rem;
+    }
+
+    // drop menu
+    .dropMenu {
+      position: absolute;
+      top: calc(100% + u.rem(5));
+      left: 0;
+      width: calc(100% + 1rem);
+      background: #fff;
+      box-shadow: 0px 3px 6px 0 rgba(0, 0, 0, 0.25);
+      border-radius: 4px;
+    }
+
+    .dropMenu a {
+      display: block;
+      padding: 0.35rem 0.5rem;
+      transition: all 0.15s;
+      &:hover {
+        background: var(--skyblue);
+        color: white;
+      }
+    }
+
+    .btn {
+      border: 1px solid;
+      padding: u.rem(5) u.rem(16);
+      display: inline-block;
+      border-radius: u.rem(4);
+      margin-left: u.rem(16);
+    }
+  }
+
+  // main nav
+  &_left a {
+    display: flex;
+    padding: u.rem(8) 1rem;
+    margin-right: auto;
+    transition: all 150ms;
+
+    &:hover {
+      color: var(--skyblue);
+    }
+
+    &:hover span {
+      transform: translateX(5px);
+    }
+
+    span {
+      margin-left: auto;
+      transition: transform 150ms;
+    }
+  }
+}
+
+// -- @large screen --
+.links {
+  @include u.breakpoint-min(large) {
+    position: inherit;
+    padding: 0;
+    flex-grow: 1;
+    display: flex;
+
+    &_right {
+      order: initial;
+      margin: 0;
+
+      .btn {
+        margin: 0 u.rem(40);
+      }
+
+      .lang {
+        order: initial;
+        margin: 0;
+      }
+    }
+
+    &_left {
+      order: -1;
+      display: flex;
+      align-items: center;
+      margin: 0 auto;
+
+      li {
+        margin-left: 3rem;
+
+        &:first-child {
+          margin: 0;
+        }
+      }
+
+      a {
+        padding: 0;
+
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.logo {
+  width: u.rem(140);
+  position: relative;
+  z-index: 10;
+}
+
+.burgerBtn {
+  @include u.square(30);
+  position: relative;
+  margin-left: auto;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+
+  @include u.breakpoint-min(large) {
+    display: none;
+  }
+
+  .burger {
+    @extend %burger-bar;
+    $gap: 8;
+
+    &::before {
+      @extend %burger-bar;
+      content: "";
+      position: absolute;
+      transform: translateY(u.rem(-$gap));
+    }
+
+    &::after {
+      @extend %burger-bar;
+      content: "";
+      position: absolute;
+      transform: translateY(u.rem($gap));
+    }
+  }
+
+  &.active .burger {
+    transform: translateX(u.rem(-1 * 30));
+    background-color: transparent;
+  }
+
+  &.active .burger::before {
+    transform: rotate(45deg) translate(70%, -21px);
+  }
+
+  &.active .burger::after {
+    transform: rotate(-45deg) translate(70%, 21px);
+  }
+}

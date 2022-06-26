@@ -1,0 +1,24 @@
+@use "sass:math";
+
+@mixin unitCalc {
+}
+
+@function rem($pxl) {
+  @if (math.is-unitless($pxl)) {
+    @return math.div($pxl, 16) + rem;
+
+  } @else {
+    @error "Invalid input, units is not allowd";
+  }
+}
+
+@function em($pxl) {
+  @if (math.is-unitless($pxl)) {
+    @return math.div($pxl, 16) + em;
+
+  } @else {
+    @error "Invalid input, units is not allowd";
+  }
+}
+
+
