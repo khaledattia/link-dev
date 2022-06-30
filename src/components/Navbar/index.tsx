@@ -12,18 +12,26 @@ export const Navbar = () => {
   const { toggle, handleToggle } = useToggle();
 
   useEffect(() => {
-    const triggerDisplay = () => {
-      const screenWidth = window.innerWidth;
+    let screenWidth = window.innerWidth;
+
+    if (screenWidth > 899) {
+      handleToggle(true);
+    }
+
+    const handleResize = () => {
+      screenWidth = window.innerWidth;
       if (screenWidth > 899) {
         handleToggle(true);
+      } else {
+        handleToggle(false);
       }
     };
 
-    window.addEventListener("resize", triggerDisplay);
-    triggerDisplay()
+    window.addEventListener("resize", handleResize);
+
     return () => {
-      window.removeEventListener("resize", triggerDisplay)
-    }
+      window.removeEventListener("resize", handleResize);
+    };
   }, [handleToggle]);
 
   return (
